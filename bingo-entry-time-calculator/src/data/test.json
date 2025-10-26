@@ -1,0 +1,153 @@
+{
+  "Delfino": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Airstrip", "time": "0:01", "sequential": false, "selected": true },
+      "2": { "name": "Underbell", "time": "0:14", "sequential": false, "selected": false },
+      "3": { "name": "Chuckster", "time": "0:21", "sequential": false, "selected": false },
+      "4": { "name": "Beach Shine", "time": "0:30", "sequential": false, "selected": false },
+      "5": { "name": "Beach Pipe", "time": "0:39", "sequential": false, "selected": false },
+      "6": { "name": "Pachinko", "time": "0:47", "sequential": false, "selected": false },
+      "7": { "name": "Box Game 1", "time": "0:41", "sequential": false, "selected": false },
+      "8": { "name": "Box Game 2", "time": "0:43", "sequential": false, "selected": false },
+      "9": { "name": "Left Bell", "time": "0:41", "sequential": false, "selected": false },
+      "10": { "name": "Gold Bird", "time": "0:53", "sequential": false, "selected": false },
+      "11": { "name": "Cop Secret", "time": "0:49", "sequential": false, "selected": false },
+      "12": { "name": "Lilypad", "time": "1:18", "sequential": false, "selected": false },
+      "13": { "name": "Grass Pipe", "time": "1:22", "sequential": false, "selected": false },
+      "14": { "name": "Right Bell", "time": "1:00", "sequential": false, "selected": false },
+      "15": { "name": "Shine Gate", "time": "0:50", "sequential": false, "selected": false },
+      "16": { "name": "Lighthouse", "time": "0:56", "sequential": false, "selected": false },
+      "17": { "name": "100 Coins", "time": "2:12", "sequential": false, "selected": false }
+    }
+  },
+  "Bianco": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Bianco 1", "time": "1:20", "sequential": false, "selected": false },
+      "2": { "name": "Bianco 2", "time": "2:15", "sequential": true, "selected": false },
+      "3": { "name": "Bianco 3", "time": "1:12", "sequential": true, "selected": false },
+      "4": { "name": "Bianco 4", "time": "1:12", "sequential": true, "selected": false },
+      "5": { "name": "Bianco 5", "time": "2:57", "sequential": true, "selected": false },
+      "6": { "name": "Bianco 6", "time": "1:40", "sequential": true, "selected": false },
+      "7": { "name": "Bianco 7", "time": "0:45", "sequential": true, "selected": false },
+      "8": { "name": "Bianco 8", "time": "1:26", "sequential": true, "selected": false },
+      "9": { "name": "Bianco 3 reds", "time": "1:31", "sequential": false, "selected": false },
+      "10": { "name": "Bianco 6 reds", "time": "1:56", "sequential": false, "selected": false },
+      "11": { "name": "Bianco 3 100 coins", "time": "2:48", "sequential": false, "selected": false }
+    }
+  },
+  "Ricco": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Ricco 1", "time": "1:20", "sequential": true, "selected": false },
+      "2": { "name": "Ricco 2", "time": "1:25", "sequential": true, "selected": false },
+      "3": { "name": "Ricco 3", "time": "0:45", "sequential": true, "selected": false },
+      "4": { "name": "Ricco 4", "time": "1:15", "sequential": true, "selected": false },
+      "5": { "name": "Ricco 5", "time": "1:24", "sequential": true, "selected": false },
+      "6": { "name": "Ricco 6", "time": "1:18", "sequential": true, "selected": false },
+      "7": { "name": "Ricco 7", "time": "0:46", "sequential": true, "selected": false },
+      "8": { "name": "Ricco 8", "time": "1:14", "sequential": true, "selected": false },
+      "9": { "name": "Ricco 2 hidden", "time": "1:25", "sequential": false, "selected": false },
+      "10": { "name": "Ricco 4 reds", "time": "1:30", "sequential": false, "selected": false },
+      "11": { "name": "Ricco 3 100 coins", "time": "2:28", "sequential": false, "selected": false }
+    }
+  },
+  "Gelato": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Gelato 1", "time": "1:13", "sequential": true, "selected": false },
+      "2": { "name": "Gelato 2", "time": "2:18", "sequential": true, "selected": false },
+      "3": { "name": "Gelato 3", "time": "1:42", "sequential": true, "selected": false },
+      "4": { "name": "Gelato 4", "time": "1:49", "sequential": true, "selected": false },
+      "5": { "name": "Gelato 5", "time": "1:33", "sequential": true, "selected": false },
+      "6": { "name": "Gelato 6", "time": "1:24", "sequential": true, "selected": false },
+      "7": { "name": "Gelato 7", "time": "0:49", "sequential": true, "selected": false },
+      "8": { "name": "Gelato 8", "time": "1:30", "sequential": true, "selected": false },
+      "9": { "name": "Gelato hidden", "time": "0:59", "sequential": false, "selected": false },
+      "10": { "name": "Gelato 1 reds", "time": "1:28", "sequential": false, "selected": false },
+      "11": { "name": "Gelato 1 100 coins", "time": "3:27", "sequential": false, "selected": false }
+    }
+  },
+  "Pianta": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Pianta 1", "time": "1:07", "sequential": true, "selected": false },
+      "2": { "name": "Pianta 2", "time": "1:23", "sequential": true, "selected": false },
+      "3": { "name": "Pianta 3", "time": "0:56", "sequential": true, "selected": false },
+      "4": { "name": "Pianta 4", "time": "1:10", "sequential": true, "selected": false },
+      "5": { "name": "Pianta 5", "time": "1:42", "sequential": true, "selected": false },
+      "6": { "name": "Pianta 6", "time": "1:41", "sequential": true, "selected": false },
+      "7": { "name": "Pianta 7", "time": "0:45", "sequential": true, "selected": false },
+      "8": { "name": "Pianta 8", "time": "1:50", "sequential": true, "selected": false },
+      "9": { "name": "Pianta 5 reds", "time": "1:35", "sequential": false, "selected": false },
+      "10": { "name": "Pianta 8 hidden", "time": "1:05", "sequential": false, "selected": false },
+      "11": { "name": "Pianta 100 coins", "time": "2:09", "sequential": false, "selected": false }
+    }
+  },
+  "Sirena": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Sirena 1", "time": "2:24", "sequential": true, "selected": false },
+      "2": { "name": "Sirena 2", "time": "1:26", "sequential": true, "selected": false },
+      "3": { "name": "Sirena 3", "time": "0:54", "sequential": true, "selected": false },
+      "4": { "name": "Sirena 4", "time": "1:26", "sequential": true, "selected": false },
+      "5": { "name": "Sirena 5", "time": "2:57", "sequential": true, "selected": false },
+      "6": { "name": "Sirena 6", "time": "1:21", "sequential": true, "selected": false },
+      "7": { "name": "Sirena 7", "time": "0:53", "sequential": true, "selected": false },
+      "8": { "name": "Sirena 8", "time": "1:32", "sequential": true, "selected": false },
+      "9": { "name": "Sirena 2 reds", "time": "1:44", "sequential": false, "selected": false },
+      "10": { "name": "Sirena 4 reds", "time": "1:38", "sequential": false, "selected": false },
+      "11": { "name": "Sirena 1 100 coins", "time": "3:24", "sequential": false, "selected": false }
+    }
+  },
+  "Pinna": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Pinna 1", "time": "1:36", "sequential": true, "selected": false },
+      "2": { "name": "Pinna 2", "time": "1:15", "sequential": true, "selected": false },
+      "3": { "name": "Pinna 3", "time": "1:16", "sequential": true, "selected": false },
+      "4": { "name": "Pinna 4", "time": "1:25", "sequential": true, "selected": false },
+      "5": { "name": "Pinna 5", "time": "1:28", "sequential": false, "selected": false },
+      "6": { "name": "Pinna 6", "time": "1:41", "sequential": true, "selected": false },
+      "7": { "name": "Pinna 7", "time": "0:56", "sequential": true, "selected": false },
+      "8": { "name": "Pinna 8", "time": "2:07", "sequential": true, "selected": false },
+      "9": { "name": "Pinna 2 reds", "time": "1:17", "sequential": false, "selected": false },
+      "10": { "name": "Pinna 6 reds", "time": "2:01", "sequential": false, "selected": false },
+      "11": { "name": "Pinna 5 100 coins", "time": "1:40", "sequential": false, "selected": false }
+    }
+  },
+
+  "Noki": {
+    "type": "shines",
+    "data": {
+      "1": { "name": "Noki 1", "time": "1:18", "sequential": true, "selected": false },
+      "2": { "name": "Noki 2", "time": "0:52", "sequential": true, "selected": false },
+      "3": { "name": "Noki 3", "time": "1:18", "sequential": true, "selected": false },
+      "4": { "name": "Noki 4", "time": "1:55", "sequential": true, "selected": false },
+      "5": { "name": "Noki 5", "time": "1:32", "sequential": true, "selected": false },
+      "6": { "name": "Noki 6", "time": "1:19", "sequential": true, "selected": false },
+      "7": { "name": "Noki 7", "time": "0:44", "sequential": true, "selected": false },
+      "8": { "name": "Noki 8", "time": "1:42", "sequential": true, "selected": false },
+      "9": { "name": "Noki hidden", "time": "1:01", "sequential": false, "selected": false },
+      "10": { "name": "Noki 6 reds", "time": "1:31", "sequential": false, "selected": false },
+      "11": { "name": "Noki 1 100 coins", "time": "2:30", "sequential": false, "selected": false }
+    }
+  },
+  "Unlocks": {
+    "type": "unlocks",
+    "data": {
+      "1": { "name": "Bianco Unlock", "time": "1:27", "sequential": true, "selected": false },
+      "2": { "name": "Ricco Unlock", "time": "0:51", "sequential": true, "selected": false },
+      "3": { "name": "Gelato Unlock", "time": "0:52", "sequential": true, "selected": false },
+      "4": { "name": "Pinna Unlock", "time": "0:25", "sequential": true, "selected": false },
+      "5": { "name": "Sirena Unlock", "time": "0:15", "sequential": true, "selected": false },
+      "6": {
+        "name": "Shadow Mario Secret Cutscene",
+        "time": "0:05",
+        "sequential": false,
+        "selected": false
+      }
+    }
+  }
+}

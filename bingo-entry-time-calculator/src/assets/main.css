@@ -1,5 +1,10 @@
 @import './base.css';
 
+body {
+  background: linear-gradient(180deg, #87e0ff 0%, #fefcea 100%);
+  background-attachment: fixed;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

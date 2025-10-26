@@ -1,0 +1,408 @@
+{
+  "Delfino": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Airstrip", "time": "6:46", "sequential": false, "selected": 1 },
+      "2": {
+        "name": "Underbell",
+        "time": "0:14",
+        "secondaryName": "Plunderbell",
+        "secondaryTime": "0:08",
+        "sequential": false,
+        "selected": 0
+      },
+      "3": {
+        "name": "Chuckster",
+        "time": "0:24",
+        "secondaryName": "Plantdelorean",
+        "secondaryTime": "0:11",
+        "sequential": false,
+        "selected": 0
+      },
+      "4": {
+        "name": "Beach Shine",
+        "time": "0:30",
+        "secondaryName": "Beacho Plant",
+        "secondaryTime": "0:16",
+        "sequential": false,
+        "selected": 0
+      },
+      "5": {
+        "name": "Beach Pipe",
+        "time": "0:47",
+        "secondaryName": "Beach Pipe Gelato",
+        "secondaryTime": "0:39",
+        "sequential": false,
+        "selected": 0
+      },
+      "6": {
+        "name": "Pachinko",
+        "time": "0:47",
+        "secondaryName": "Plantchinko",
+        "secondaryTime": "0:36",
+        "sequential": false,
+        "selected": 0
+      },
+      "7": { "name": "Box Game 1", "time": "0:41", "sequential": false, "selected": 0 },
+      "8": { "name": "Box Game 2", "time": "0:43", "sequential": false, "selected": 0 },
+      "9": { "name": "Left Bell", "time": "0:41", "sequential": false, "selected": 0 },
+      "10": { "name": "Gold Bird", "time": "0:53", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Cop Secret",
+        "time": "0:57",
+        "secondaryName": "Cop Secret Initial Spawn",
+        "secondaryTime": "0:49",
+        "sequential": false,
+        "selected": 0
+      },
+      "12": { "name": "Lilypad", "time": "1:18", "sequential": false, "selected": 0 },
+      "13": {
+        "name": "Grass Pipe",
+        "time": "1:35",
+        "secondaryName": "Grass Pipe from Pinna",
+        "secondaryTime": "1:22",
+        "sequential": false,
+        "selected": 0
+      },
+      "14": { "name": "Right Bell", "time": "1:00", "sequential": false, "selected": 0 },
+      "15": {
+        "name": "Shine Gate",
+        "time": "0:50",
+        "secondaryName": "Shine Gate from Pianta",
+        "secondaryTime": "0:40",
+        "sequential": false,
+        "selected": 0
+      },
+      "16": { "name": "Lighthouse", "time": "0:56", "sequential": false, "selected": 0 },
+      "17": {
+        "name": "100 Coins",
+        "time": "2:12",
+        "secondaryName": "100 Coins routed in",
+        "secondaryTime": "1:32",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Bianco": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Bianco 1", "time": "1:20", "sequential": false, "selected": 0 },
+      "2": { "name": "Bianco 2", "time": "2:18", "sequential": true, "selected": 0 },
+      "3": { "name": "Bianco 3", "time": "1:12", "sequential": true, "selected": 0 },
+      "4": { "name": "Bianco 4", "time": "1:15", "sequential": true, "selected": 0 },
+      "5": { "name": "Bianco 5", "time": "2:57", "sequential": true, "selected": 0 },
+      "6": { "name": "Bianco 6", "time": "1:40", "sequential": true, "selected": 0 },
+      "7": { "name": "Bianco 7", "time": "0:45", "sequential": true, "selected": 0 },
+      "8": { "name": "Bianco 8", "time": "1:26", "sequential": true, "selected": 0 },
+      "9": { "name": "Bianco 3 reds", "time": "1:31", "sequential": false, "selected": 0 },
+      "10": { "name": "Bianco 6 reds", "time": "1:56", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Bianco 3 100 Coins",
+        "time": "2:48",
+        "secondaryName": "Bianco 1 100 Coins",
+        "secondaryTime": "3:50",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Ricco": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Ricco 1", "time": "1:20", "sequential": true, "selected": 0 },
+      "2": { "name": "Ricco 2", "time": "1:25", "sequential": true, "selected": 0 },
+      "3": { "name": "Ricco 3", "time": "0:45", "sequential": true, "selected": 0 },
+      "4": { "name": "Ricco 4", "time": "1:15", "sequential": true, "selected": 0 },
+      "5": { "name": "Ricco 5", "time": "1:24", "sequential": true, "selected": 0 },
+      "6": { "name": "Ricco 6", "time": "1:18", "sequential": true, "selected": 0 },
+      "7": { "name": "Ricco 7", "time": "0:46", "sequential": true, "selected": 0 },
+      "8": { "name": "Ricco 8", "time": "1:14", "sequential": true, "selected": 0 },
+      "9": { "name": "Ricco 2 hidden", "time": "1:25", "sequential": false, "selected": 0 },
+      "10": { "name": "Ricco 4 reds", "time": "1:30", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Ricco 3 100 Coins",
+        "time": "2:28",
+        "secondaryName": "Ricco 1 100 Coins",
+        "secondaryTime": "3:03",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Gelato": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Gelato 1", "time": "1:13", "sequential": true, "selected": 0 },
+      "2": { "name": "Gelato 2", "time": "2:18", "sequential": true, "selected": 0 },
+      "3": { "name": "Gelato 3", "time": "1:42", "sequential": true, "selected": 0 },
+      "4": {
+        "name": "Gelato 4",
+        "time": "2:20",
+        "secondaryName": "Turbo Bird",
+        "secondaryTime": "1:49",
+        "sequential": true,
+        "selected": 0
+      },
+      "5": { "name": "Gelato 5", "time": "1:33", "sequential": true, "selected": 0 },
+      "6": { "name": "Gelato 6", "time": "1:24", "sequential": true, "selected": 0 },
+      "7": { "name": "Gelato 7", "time": "0:49", "sequential": true, "selected": 0 },
+      "8": { "name": "Gelato 8", "time": "1:30", "sequential": true, "selected": 0 },
+      "9": { "name": "Gelato hidden", "time": "0:59", "sequential": false, "selected": 0 },
+      "10": { "name": "Gelato 1 reds", "time": "1:28", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Gelato 1 100 Coins",
+        "time": "3:27",
+        "secondaryName": "Gelato 3 100 Coins",
+        "secondaryTime": "3:08",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Pianta": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Pianta 1", "time": "1:07", "sequential": true, "selected": 0 },
+      "2": { "name": "Pianta 2", "time": "1:23", "sequential": true, "selected": 0 },
+      "3": { "name": "Pianta 3", "time": "0:56", "sequential": true, "selected": 0 },
+      "4": { "name": "Pianta 4", "time": "1:10", "sequential": true, "selected": 0 },
+      "5": { "name": "Pianta 5", "time": "1:42", "sequential": true, "selected": 0 },
+      "6": { "name": "Pianta 6", "time": "1:41", "sequential": true, "selected": 0 },
+      "7": { "name": "Pianta 7", "time": "0:45", "sequential": true, "selected": 0 },
+      "8": { "name": "Pianta 8", "time": "1:50", "sequential": true, "selected": 0 },
+      "9": { "name": "Pianta 5 reds", "time": "1:35", "sequential": false, "selected": 0 },
+      "10": { "name": "Pianta 8 hidden", "time": "1:05", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Pianta 1 100 Coins",
+        "time": "2:09",
+        "secondaryName": "Pianta 5 100 Coins",
+        "secondaryTime": "1:44",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Sirena": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": {
+        "name": "Sirena 1",
+        "time": "2:24",
+        "secondaryName": "Sirena 1 Mario Pinball",
+        "secondaryTime": "2:35",
+        "sequential": true,
+        "selected": 0
+      },
+      "2": { "name": "Sirena 2", "time": "1:26", "sequential": true, "selected": 0 },
+      "3": { "name": "Sirena 3", "time": "0:54", "sequential": true, "selected": 0 },
+      "4": { "name": "Sirena 4", "time": "1:26", "sequential": true, "selected": 0 },
+      "5": { "name": "Sirena 5", "time": "2:57", "sequential": true, "selected": 0 },
+      "6": { "name": "Sirena 6", "time": "1:21", "sequential": true, "selected": 0 },
+      "7": { "name": "Sirena 7", "time": "0:53", "sequential": true, "selected": 0 },
+      "8": { "name": "Sirena 8", "time": "1:32", "sequential": true, "selected": 0 },
+      "9": { "name": "Sirena 2 reds", "time": "1:44", "sequential": false, "selected": 0 },
+      "10": { "name": "Sirena 4 reds", "time": "1:38", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Sirena 1 100 coins",
+        "time": "3:24",
+        "secondaryName": "Sirena 4 100 coins",
+        "secondaryTime": "2:28",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Pinna": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Pinna 1", "time": "1:36", "sequential": true, "selected": 0 },
+      "2": { "name": "Pinna 2", "time": "1:15", "sequential": true, "selected": 0 },
+      "3": {
+        "name": "Pinna 3",
+        "time": "1:16",
+        "secondaryName": "Pinna 3 Hoverless",
+        "secondaryTime": "1:43",
+        "sequential": true,
+        "selected": 0
+      },
+      "4": { "name": "Pinna 4", "time": "1:25", "sequential": true, "selected": 0 },
+      "5": { "name": "Pinna 5", "time": "1:28", "sequential": false, "selected": 0 },
+      "6": {
+        "name": "Pinna 6",
+        "time": "1:41",
+        "secondaryName": "Kaffs wild ride(EYG)",
+        "secondaryTime": "1:58",
+        "sequential": true,
+        "selected": 0
+      },
+      "7": { "name": "Pinna 7", "time": "0:56", "sequential": true, "selected": 0 },
+      "8": { "name": "Pinna 8", "time": "2:07", "sequential": true, "selected": 0 },
+      "9": { "name": "Pinna 2 reds", "time": "1:17", "sequential": false, "selected": 0 },
+      "10": { "name": "Pinna 6 reds", "time": "2:01", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Pinna 5 100 coins",
+        "time": "1:40",
+        "secondaryName": "Pinna 2 100 coins",
+        "secondaryTime": "2:55",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+
+  "Noki": {
+    "type": "shines",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Noki 1", "time": "1:18", "sequential": true, "selected": 0 },
+      "2": {
+        "name": "Noki 2",
+        "time": "0:52",
+        "secondaryName": "Noki 2 jumpless",
+        "secondaryTime": "1:05",
+        "sequential": true,
+        "selected": 0
+      },
+      "3": { "name": "Noki 3", "time": "1:18", "sequential": true, "selected": 0 },
+      "4": { "name": "Noki 4", "time": "1:55", "sequential": true, "selected": 0 },
+      "5": { "name": "Noki 5", "time": "1:32", "sequential": true, "selected": 0 },
+      "6": { "name": "Noki 6", "time": "1:19", "sequential": true, "selected": 0 },
+      "7": { "name": "Noki 7", "time": "0:44", "sequential": true, "selected": 0 },
+      "8": { "name": "Noki 8", "time": "1:42", "sequential": true, "selected": 0 },
+      "9": { "name": "Noki hidden", "time": "1:01", "sequential": false, "selected": 0 },
+      "10": { "name": "Noki 6 reds", "time": "1:31", "sequential": false, "selected": 0 },
+      "11": {
+        "name": "Noki 1 100 coins",
+        "time": "2:30",
+        "secondaryName": "Noki 2 100 coins",
+        "secondaryTime": "1:55",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Unlocks": {
+    "type": "unlocks",
+    "isOpen": true,
+    "data": {
+      "1": { "name": "Bianco Unlock", "time": "1:27", "sequential": true, "selected": 0 },
+      "2": {
+        "name": "Ricco Unlock",
+        "time": "0:55",
+        "secondaryName": "Ricco Unlock Travel Skip",
+        "secondaryTime": "0:45",
+        "sequential": true,
+        "selected": 0
+      },
+      "3": { "name": "Gelato Unlock", "time": "0:53", "sequential": true, "selected": 0 },
+      "4": { "name": "Pinna Unlock", "time": "0:25", "sequential": true, "selected": 0 },
+      "5": { "name": "Sirena Unlock", "time": "0:15", "sequential": true, "selected": 0 },
+      "6": {
+        "name": "Shadow Mario Secret Cutscene",
+        "time": "0:05",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  },
+  "Blues": {
+    "type": "blues",
+    "isOpen": true,
+    "data": {
+      "1": {
+        "name": "Bianco 15",
+        "time": "1:48",
+        "secondaryName": "Bianco 20",
+        "secondaryTime": "2:45",
+        "sequential": false,
+        "selected": 0
+      },
+      "2": {
+        "name": "Bianco 2x enemies(exit)",
+        "time": "0:55",
+        "secondaryName": "Bianco 2 enemies turbo",
+        "secondaryTime": "1:45",
+        "sequential": false,
+        "selected": 0
+      },
+      "3": {
+        "name": "Ricco 15",
+        "time": "1:20",
+        "secondaryName": "Ricco 23",
+        "secondaryTime": "3:22",
+        "sequential": false,
+        "selected": 0
+      },
+      "4": {
+        "name": "Delfino 11",
+        "time": "1:25",
+        "secondaryName": "Delfino 15",
+        "secondaryTime": "2:25",
+        "sequential": false,
+        "selected": 0
+      },
+      "5": {
+        "name": "3 Fruit Ladies",
+        "time": "1:50",
+        "secondaryName": "4 Fruit Ladies",
+        "secondaryTime": "2:30",
+        "sequential": false,
+        "selected": 0
+      },
+      "6": {
+        "name": "Gelato 15",
+        "time": "1:45",
+        "secondaryName": "Gelato 20",
+        "secondaryTime": "2:55",
+        "sequential": false,
+        "selected": 0
+      },
+      "7": {
+        "name": "Pianta 16",
+        "time": "",
+        "secondaryName": "Pianta 20",
+        "secondaryTime": "",
+        "sequential": false,
+        "selected": 0
+      },
+      "8": {
+        "name": "Pinna 16",
+        "time": "1:45",
+        "secondaryName": "Pinna 20",
+        "secondaryTime": "2:10",
+        "sequential": false,
+        "selected": 0
+      },
+      "9": {
+        "name": "7 Beach Blues",
+        "time": "1:15",
+        "sequential": false,
+        "selected": 0
+      },
+      "10": {
+        "name": "Sirena 9",
+        "time": "0:50",
+        "secondaryName": "Sirena 18",
+        "secondaryTime": "2:15",
+        "sequential": false,
+        "selected": 0
+      },
+      "11": {
+        "name": "Noki 12",
+        "time": "1:10",
+        "secondaryName": "Noki 16",
+        "secondaryTime": "2:10",
+        "sequential": false,
+        "selected": 0
+      }
+    }
+  }
+}

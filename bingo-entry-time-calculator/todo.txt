@@ -1,0 +1,40 @@
+ v2:
+-app hosting
+
+v3:
+-comparison view with 2 sets of grids so u can compare 2 routes times
+-misc column: bianco turbo, move enemies?, life grind?, 50 coins?
+
+3s
+
+done:
+-shine grid layout
+-shines change image styling on click
+-airstrip on by default
+- 1-8 all previous ones activate automatically on click of later shine.
+-background color
+-line color
+-input field for transitions top of the page
+-input field for misc non shine/blues related timeloss
+-input field for amount of event cutscenes so all shine times can be consistently event cutscene free(autocomplete with default numbers that are minimum for gelato entry, pinna entry and noki entry)
+-checkboxes for bianco full unlock, ricco plant, gelato plant, pinna unlock(clicking later one also clicks previous ones)
+-list times for each shine of  the json
+-times for each unlock.
+-improve checkbox styles
+-make it so clicking an unlock checkbox also checks the previous ones
+-rush calculator(do you need specific modes for gelato/pinna/noki rush or should it just calculate the end time and display how many shines you have? entry times are more recognizable so that does have merit + still gotta calc transitions and plants etc. but could also be useful for calcing specific invasion goal races to the middle of the card so having the current time always on and options for unlocks would make sense)
+-fix checkbox bug 
+-add event cs and transitions to calc
+-calculator could have list of how long each world/event cutscnes/transitions/plants take to give a better picture of the calc
+ -option to upload your own speed set
+ -blue coins(same as others, use blue coin icon and name of the blue route below)
+ -more transition icons
+ -add option for fast/slow variant of shine whether it be 2 diff hundos or something that's routed in faster. click the shine an additional time to get sunglasses shine(or exhausted shine for bianco 4 hoverless/ricco 3 hless etc.). initially show text, have additional prop for activeText that replaces it if exists and same for fast variant having fastText and fastTime props
+ -button for compact view(removes labels to have more on screen)
+ -add logic for fast shine variants and update text/image when used
+ -allow closing world sections
+ -allow closing world time summaries
+ -transitions default options
+-event cutscenes default options
+-blue trade shines to totals
+-instructions page(how are transitions and plant fights separated? fights include the default movement to/from it and transitions calc should only include non plant fight related movement)

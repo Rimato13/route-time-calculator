@@ -1,0 +1,13 @@
+shine get 3.7s
+shine get to white screen on m levels = 25s
+=29s
+
+noki = 20s
+=24s
+
+pianta = 20s no pipe animation
+
+pinna 18s
+
+delfino 8s
+
