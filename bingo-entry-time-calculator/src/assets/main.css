@@ -1,8 +1,12 @@
 @import './base.css';
 
 body {
-  background: linear-gradient(180deg, #87e0ff 0%, #fefcea 100%);
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom, #92e3ff 0%, #b6ecff 60%, #eaf9ff 100%);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #app {

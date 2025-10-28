@@ -22,15 +22,15 @@ const id = useId()
 </script>
 
 <template>
-  <label class="combo">
-    <span>{{ label }}</span>
+  <div class="combo">
+    <label :for="id" class="combo-label">{{ label }}</label>
     <input :list="id" v-model="model" class="combo-input" />
     <datalist :id="id">
       <option v-for="(option, i) in options" :key="i" :value="option.value">
         {{ option.label }}
       </option>
     </datalist>
-  </label>
+  </div>
 </template>
 
 <style scoped>
@@ -43,7 +43,7 @@ const id = useId()
 
 .combo-input {
   border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #1e90ff;
   outline: none;
   background: transparent;
   font-size: 1rem;
@@ -51,7 +51,19 @@ const id = useId()
   transition: border-color 0.2s;
 }
 
-.combo-input:focus {
-  border-bottom-color: #1e90ff;
+.combo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 200px;
+}
+
+.combo-label {
+  font-weight: 600;
+  color: #333;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: 'nowrap';
 }
 </style>

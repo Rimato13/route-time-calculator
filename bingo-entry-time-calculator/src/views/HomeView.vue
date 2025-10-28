@@ -17,28 +17,64 @@ const eventCutsceneAmount = ref()
 const transitions = ref()
 const misc = ref()
 const totalShines = ref()
-const isCompact = ref(false)
+const isCompact = ref(0)
 const showSummary = ref(true)
 const whenevers = ref()
+const shineSize = ref('medium')
+const timeLog = ref([])
 
 function toggleSelected(world, shine) {
   const target = worlds.value[world].data[shine]
   const wasSelected = target.selected === 1 || target.selected === 2
+  if (target.selected === 0) {
+    worlds.value[world].requiredUnlocks?.forEach((unlockName) => {
+      const unlockWorld = worlds.value.Unlocks?.data
+      if (unlockWorld) {
+        const unlockEntry = Object.values(unlockWorld).find((u) => u.name === unlockName)
+        if (unlockEntry && unlockEntry.selected === 0) {
+          unlockEntry.selected = 1
+          addLogEntry(unlockEntry.name, true)
+        }
+      }
+    })
+  }
+
   if (target.sequential && !wasSelected) {
     const shines = Array.from({ length: shine }, (_, i) => i + 1)
     shines.forEach((shine) => {
-      const target = worlds.value[world].data[shine]
-      if (target.sequential && !target.selected) {
-        target.selected = 1
+      const secondTarget = worlds.value[world].data[shine]
+      if (secondTarget.sequential && !secondTarget.selected) {
+        if (target.name === 'Gelato Unlock' && secondTarget.name === 'Ricco Unlock') return
+        secondTarget.selected = 1
+        addLogEntry(secondTarget.name, worlds.value[world].type === 'unlocks')
       }
     })
   } else if (target.selected === 1 && target.secondaryName) {
     target.selected = 2
+    const index = timeLog.value.findIndex((e) => Object.keys(e)[0] === target.name)
+    if (index != -1) {
+      const oldTime = Object.values(timeLog.value[index])[0]
+      const diff = mmssToSeconds(target.secondaryTime) - mmssToSeconds(target.time)
+      timeLog.value[index] = { [target.secondaryName]: oldTime + diff }
+    }
   } else if (target.selected === 0) {
     target.selected = 1
+    addLogEntry(target.name, worlds.value[world].type === 'unlocks')
   } else {
+    if (target.selected === 1) {
+      deleteLogEntry(target.name)
+    } else {
+      deleteLogEntry(target.secondaryName)
+    }
     target.selected = 0
   }
+  timeLog.value = timeLog.value.filter((entry) => {
+    const key = Object.keys(entry)[0]
+    const isShineCountLog = /^\d+ shines$/.test(key)
+    if (!isShineCountLog) return true
+    const count = Number(key.split(' ')[0])
+    return count <= shineCount.value
+  })
 }
 
 function mmssToSeconds(timeString) {
@@ -53,12 +89,18 @@ function secondsToMMSS(seconds) {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
-const totals = computed(() => {
+const countTotals = () => {
   const transitionSeconds = Number(transitions.value ?? 0)
-  const miscSeconds = Number(misc.value ?? 0)
+  const tradeSeconds = totalShines.value > 0 ? 16 : 0
+  const miscSeconds = Number(misc.value ?? 0) + tradeSeconds
   const wheneverSeconds = Number(whenevers.value ?? 0) * 10
   const eventCutsceneSeconds = Number(eventCutsceneAmount.value ?? 0) * 4
-  let total = transitionSeconds + miscSeconds + wheneverSeconds + eventCutsceneSeconds
+  const total =
+    transitionSeconds +
+    miscSeconds +
+    wheneverSeconds +
+    eventCutsceneSeconds -
+    (shineCount.value >= 2 ? 12 : 0) //fix shine get -> plaza spawn for 1st shine
   const worldTotals = {
     ...(worlds.value.Delfino.data[1].selected
       ? { Cutscenes: mmssToSeconds(worlds.value.Delfino.data[1].time) }
@@ -68,6 +110,11 @@ const totals = computed(() => {
     ...(miscSeconds > 0 ? { Misc: miscSeconds } : {}),
     ...(wheneverSeconds > 0 ? { Whenevers: wheneverSeconds } : {}),
   }
+  return { total, worldTotals }
+}
+
+const totals = computed(() => {
+  let { total, worldTotals } = countTotals()
 
   Object.entries(worlds.value).forEach(([worldName, world]) => {
     if (world?.data) {
@@ -125,124 +172,223 @@ function loadCustomJson(event) {
 function toggleWorld(worldName) {
   worlds.value[worldName].isOpen = !worlds.value[worldName].isOpen
 }
+
+function alterCompact(currentValue) {
+  if (currentValue === 0 || currentValue === 1) {
+    isCompact.value += 1
+  } else {
+    isCompact.value = 0
+  }
+}
+
+function isWorldEmpty(world) {
+  if (!world?.data) return true
+  return !Object.values(world.data).some((shine) => shine.selected)
+}
+
+function addLogEntry(shineName, isUnlock) {
+  let { total } = countTotals()
+  Object.entries(worlds.value).forEach(([worldName, world]) => {
+    if (world?.data) {
+      Object.values(world.data).forEach((shine) => {
+        const time = shine.selected === 2 ? shine.secondaryTime : shine.time
+        if (shine.selected && shine.time) {
+          total += mmssToSeconds(time)
+        }
+      })
+    }
+  })
+  timeLog.value.push({ [shineName]: total })
+  const thresholds = [3, 5, 10, 20, 26]
+  if (thresholds.includes(shineCount.value) && !isUnlock) {
+    console.log(shineCount.value)
+    timeLog.value.push({ [shineCount.value + ' shines']: total })
+  }
+}
+
+function deleteLogEntry(shineName) {
+  const index = timeLog.value.findIndex((entry) => Object.keys(entry)[0] === shineName)
+  if (index !== -1) {
+    timeLog.value.splice(index, 1)
+  }
+}
 </script>
 
 <template>
-  <div class="container">
-    <h1 class="value">Route Time Calculator</h1>
-    <label class="upload-btn">
-      Upload custom shine speeds
-      <input type="file" accept="application/json" @change="loadCustomJson" />
-    </label>
-    <button class="compact-btn" :class="{ active: isCompact }" @click="isCompact = !isCompact">
-      {{ isCompact ? 'Default View' : 'Compact View' }}
-    </button>
-    <router-link to="/instructions" class="compact-btn"> App Instructions </router-link>
+  <div class="layout">
+    <div class="container">
+      <label class="shine-size-label">
+        Shine size:
+        <select v-model="shineSize" class="shine-size-select">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </label>
+      <h1 class="value">Route Time Calculator</h1>
 
-    <div v-for="(shines, worldName) in worlds" :key="worldName" class="world-row">
-      <h2 class="world-title clickable" v-if="!isCompact" @click="toggleWorld(worldName)">
-        {{ worldName }}
-      </h2>
-      <div :class="['shine-grid', { 'longer-gap': worldName === 'Unlocks' }]" v-if="shines.isOpen">
-        <div v-for="(shine, index) in shines.data" :key="shine" class="shine-item">
-          <img
-            :src="
-              shines.type == 'shines'
-                ? shine.selected === 2
-                  ? coolShineImage
-                  : shineImage
-                : shines.type === 'blues'
-                  ? blueCoinImage
-                  : shine.name === 'Shadow Mario Secret Cutscene'
-                    ? shadowMarioImage
-                    : shine.name === 'Pinna Unlock'
-                      ? canonImage
-                      : shine.name === 'Sirena Unlock'
-                        ? pipeImage
-                        : shine.name === 'Ricco Unlock' || shine.name === 'Gelato Unlock'
-                          ? pollutedImage2
-                          : pollutedImage
-            "
-            :alt="shine.name"
-            :class="[
-              'shine-img',
-              {
-                selected: shine.selected === 1 || shine.selected === 2,
-                notSelected: shine.selected === 0,
-              },
-              { larger: worldName === 'Unlocks' },
-            ]"
-            @click="toggleSelected(worldName, index)"
-          />
-          <span class="shine-name">{{
-            shine.selected === 2 ? shine.secondaryName : shine.name
-          }}</span>
+      <label class="upload-btn">
+        Upload custom shine speeds
+        <input type="file" accept="application/json" @change="loadCustomJson" />
+      </label>
+      <button class="compact-btn" :class="{ active: isCompact }" @click="alterCompact(isCompact)">
+        {{
+          isCompact === 0 ? 'Compact View' : isCompact === 1 ? 'Screenshot View' : 'Default View'
+        }}
+      </button>
+      <router-link to="/instructions" class="compact-btn"> App Instructions </router-link>
+      <div v-for="(shines, worldName) in worlds" :key="worldName" class="{world-row: isCompact }">
+        <h2 class="world-title clickable" v-if="isCompact === 0" @click="toggleWorld(worldName)">
+          {{ worldName }}
+        </h2>
+        <div
+          :class="['shine-grid', { 'longer-gap': worldName === 'Unlocks' }]"
+          v-if="shines.isOpen && (isCompact !== 2 || !isWorldEmpty(shines))"
+        >
+          <div v-for="(shine, index) in shines.data" :key="shine" class="shine-item">
+            <img
+              :src="
+                shines.type == 'shines'
+                  ? shine.selected === 2
+                    ? coolShineImage
+                    : shineImage
+                  : shines.type === 'blues'
+                    ? blueCoinImage
+                    : shine.name === 'Shadow Mario Secret Cutscene'
+                      ? shadowMarioImage
+                      : shine.name === 'Pinna Unlock'
+                        ? canonImage
+                        : shine.name === 'Sirena Unlock'
+                          ? pipeImage
+                          : shine.name === 'Ricco Unlock' || shine.name === 'Gelato Unlock'
+                            ? pollutedImage2
+                            : pollutedImage
+              "
+              :alt="shine.name"
+              :class="[
+                'shine-img',
+                shineSize,
+                {
+                  selected: shine.selected === 1 || shine.selected === 2,
+                  notSelected: shine.selected === 0,
+                },
+                { larger: worldName === 'Unlocks' },
+              ]"
+              @click="toggleSelected(worldName, index)"
+            />
+            <span class="shine-name">{{
+              shine.selected === 2 ? shine.secondaryName : shine.name
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <h2 class="world-title">Other</h2>
+
+      <div class="input-row">
+        <SelectInput
+          label="Event Cutscenes"
+          :options="[
+            { value: '3', label: 'Gelato unlock min' },
+            { value: '4', label: 'Pinna unlock min' },
+            { value: '6', label: 'Noki unlock, unlock yoshi asap' },
+            { value: '11', label: 'Noki unlock, yoshi at 14 no unlock' },
+          ]"
+          v-model="eventCutsceneAmount"
+        />
+        <SelectInput label="Sirena Whenevers" v-model="whenevers" />
+        <SelectInput
+          label="Transitions(seconds)"
+          :options="[
+            { value: '5', label: 'Bianco -> Ricco (or reverse)' },
+            { value: '9', label: 'Bianco -> Gelato (or reverse)' },
+            { value: '13', label: 'Gelato -> Ricco (or reverse)' },
+            { value: '15', label: 'Default Start -> Pianta' },
+            { value: '9', label: 'Pinna -> Ricco' },
+          ]"
+          v-model="transitions"
+        />
+
+        <SelectInput label="Misc timeloss(seconds)" v-model="misc" />
+        <SelectInput label="Shines from Blue Trades" v-model="totalShines" />
+      </div>
+    </div>
+    <div class="columnContainer">
+      <div class="totals">
+        <button
+          class="compact-btn"
+          :class="{ active: showSummary }"
+          @click="showSummary = !showSummary"
+        >
+          {{ showSummary ? 'Hide' : 'Show' }} world summaries
+        </button>
+        <div v-if="showSummary">
+          <p v-for="(time, world) in totals.worldTotals" :key="world" class="total-line">
+            <span class="label-text">{{ world }}:</span>
+            <span class="value">{{ secondsToMMSS(time) }}</span>
+          </p>
+          <hr style="width: 80%" />
+        </div>
+        <p class="total-line">
+          <span class="label-text">Total Time:</span>
+          <span class="value">{{ secondsToMMSS(totals.total) }}</span>
+        </p>
+        <p class="total-line">
+          <span class="label-text">Total Shines:</span>
+          <span class="value">{{ shineCount }}</span>
+        </p>
+      </div>
+
+      <div class="shine-log">
+        <h3 class="shine-log-title">Progress Log</h3>
+        <div class="shine-log-messages">
+          <div v-for="(entry, i) in timeLog" :key="i" class="shine-log-entry">
+            {{ Object.keys(entry)[0] }}
+            {{ Object.keys(entry)[0].includes('Unlock') ? 'done' : 'collected' }} at
+            {{ secondsToMMSS(Object.values(entry)[0]) }}
+          </div>
         </div>
       </div>
     </div>
-    <h2 class="world-title">Other</h2>
-    <hr />
-    <div class="input-row">
-      <SelectInput
-        label="Event Cutscenes"
-        :options="[
-          { value: '3', label: 'Gelato unlock min' },
-          { value: '4', label: 'Pinna unlock min' },
-          { value: '6', label: 'Noki unlock, unlock yoshi asap' },
-          { value: '11', label: 'Noki unlock, yoshi at 14 no unlock' },
-        ]"
-        v-model="eventCutsceneAmount"
-      />
-      <SelectInput label="Sirena Whenevers" v-model="whenevers" />
-      <SelectInput
-        label="Transitions(seconds)"
-        :options="[
-          { value: '5', label: 'Bianco -> Ricco (or reverse)' },
-          { value: '9', label: 'Bianco -> Gelato (or reverse)' },
-          { value: '13', label: 'Gelato -> Ricco (or reverse)' },
-          { value: '15', label: 'Default Start -> Pianta' },
-          { value: '9', label: 'Pinna -> Ricco' },
-        ]"
-        v-model="transitions"
-      />
-
-      <SelectInput label="Misc timeloss(seconds)" v-model="misc" />
-      <SelectInput label="Shines from Blue Trades" v-model="totalShines" />
-    </div>
-  </div>
-
-  <div class="totals">
-    <button
-      class="compact-btn"
-      :class="{ active: showSummary }"
-      @click="showSummary = !showSummary"
-    >
-      {{ showSummary ? 'Hide' : 'Show' }} world summaries
-    </button>
-    <div v-if="showSummary">
-      <p v-for="(time, world) in totals.worldTotals" :key="world" class="total-line">
-        <span class="label-text">{{ world }}:</span>
-        <span class="value">{{ secondsToMMSS(time) }}</span>
-      </p>
-      <hr />
-    </div>
-    <p class="total-line">
-      <span class="label-text">Total Time:</span>
-      <span class="value">{{ secondsToMMSS(totals.total) }}</span>
-    </p>
-    <p class="total-line">
-      <span class="label-text">Total Shines:</span>
-      <span class="value">{{ shineCount }}</span>
-    </p>
   </div>
 </template>
 
 <style scoped>
-.container {
-  max-width: 900px;
+.layout {
+  display: flex;
+  width: 100%;
+  max-width: 1500px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+}
+.container {
+  flex: 1;
+  max-width: 900px;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 350px;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container,
+  .columnContainer {
+    width: 100%;
+    max-width: 1000px;
+  }
 }
 
 h1 {
@@ -289,6 +435,16 @@ hr {
   height: 48px;
   cursor: pointer;
   transition: opacity 0.2s ease;
+}
+
+.shine-img.small {
+  width: 24px;
+  height: 24px;
+}
+
+.shine-img.large {
+  width: 64px;
+  height: 64px;
 }
 
 .shine-img.larger {
@@ -345,6 +501,7 @@ hr {
   justify-content: flex-start;
   align-items: baseline;
   white-space: nowrap;
+  gap: 10px;
 }
 
 .label-text {
@@ -379,7 +536,7 @@ hr {
     2px 2px 0 #0078ff,
     4px 4px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 0.3rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid rgba(255, 220, 150, 0.8);
   padding-bottom: 0.3rem;
   cursor: pointer;
   user-select: none;
@@ -434,5 +591,80 @@ hr {
 .compact-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(255, 200, 0, 0.4);
+}
+
+.shine-size-label {
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+  margin-left: 10px;
+  user-select: none;
+}
+
+.shine-size-select {
+  background: linear-gradient(180deg, #ffdd33, #ffaa00);
+  color: #222;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  transition: all 0.15s ease;
+  margin-left: 8px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  appearance: none;
+}
+
+.shine-size-select:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 200, 0, 0.4);
+}
+
+.shine-size-select:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #ffb700, #ff9900);
+}
+
+.shine-log {
+  margin-top: 2rem;
+  background: rgba(20, 20, 20, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #e8e8e8;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.shine-log-title {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.shine-log-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* spacing between entries */
+}
+
+.shine-log-entry {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 6px 8px;
+  line-height: 1.3;
+  border-left: 3px solid #ffaa00;
+  transition: background 0.2s;
+}
+
+.shine-log-entry:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 </style>

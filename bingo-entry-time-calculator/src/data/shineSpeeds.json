@@ -6,33 +6,33 @@
       "1": { "name": "Airstrip", "time": "6:46", "sequential": false, "selected": 1 },
       "2": {
         "name": "Underbell",
-        "time": "0:14",
+        "time": "0:18",
         "secondaryName": "Plunderbell",
-        "secondaryTime": "0:08",
+        "secondaryTime": "0:12",
         "sequential": false,
         "selected": 0
       },
       "3": {
         "name": "Chuckster",
-        "time": "0:24",
+        "time": "0:27",
         "secondaryName": "Plantdelorean",
-        "secondaryTime": "0:11",
+        "secondaryTime": "0:14",
         "sequential": false,
         "selected": 0
       },
       "4": {
         "name": "Beach Shine",
-        "time": "0:30",
+        "time": "0:33",
         "secondaryName": "Beacho Plant",
-        "secondaryTime": "0:16",
+        "secondaryTime": "0:19",
         "sequential": false,
         "selected": 0
       },
       "5": {
         "name": "Beach Pipe",
-        "time": "0:47",
+        "time": "0:50",
         "secondaryName": "Beach Pipe Gelato",
-        "secondaryTime": "0:39",
+        "secondaryTime": "0:41",
         "sequential": false,
         "selected": 0
       },
@@ -46,7 +46,7 @@
       },
       "7": { "name": "Box Game 1", "time": "0:41", "sequential": false, "selected": 0 },
       "8": { "name": "Box Game 2", "time": "0:43", "sequential": false, "selected": 0 },
-      "9": { "name": "Left Bell", "time": "0:41", "sequential": false, "selected": 0 },
+      "9": { "name": "Left Bell", "time": "0:42", "sequential": false, "selected": 0 },
       "10": { "name": "Gold Bird", "time": "0:53", "sequential": false, "selected": 0 },
       "11": {
         "name": "Cop Secret",
@@ -88,11 +88,19 @@
   "Bianco": {
     "type": "shines",
     "isOpen": true,
+    "requiredUnlocks": ["Bianco Unlock"],
     "data": {
       "1": { "name": "Bianco 1", "time": "1:20", "sequential": false, "selected": 0 },
       "2": { "name": "Bianco 2", "time": "2:18", "sequential": true, "selected": 0 },
       "3": { "name": "Bianco 3", "time": "1:12", "sequential": true, "selected": 0 },
-      "4": { "name": "Bianco 4", "time": "1:15", "sequential": true, "selected": 0 },
+      "4": {
+        "name": "Bianco 4",
+        "time": "1:15",
+        "secondaryName": "Bianco 4 hoverless",
+        "secondaryTime": "1:20",
+        "sequential": true,
+        "selected": 0
+      },
       "5": { "name": "Bianco 5", "time": "2:57", "sequential": true, "selected": 0 },
       "6": { "name": "Bianco 6", "time": "1:40", "sequential": true, "selected": 0 },
       "7": { "name": "Bianco 7", "time": "0:45", "sequential": true, "selected": 0 },
@@ -111,11 +119,19 @@
   },
   "Ricco": {
     "type": "shines",
+    "requiredUnlocks": ["Bianco Unlock", "Ricco Unlock"],
     "isOpen": true,
     "data": {
       "1": { "name": "Ricco 1", "time": "1:20", "sequential": true, "selected": 0 },
       "2": { "name": "Ricco 2", "time": "1:25", "sequential": true, "selected": 0 },
-      "3": { "name": "Ricco 3", "time": "0:45", "sequential": true, "selected": 0 },
+      "3": {
+        "name": "Ricco 3",
+        "time": "0:45",
+        "secondaryName": "Ricco 3 Hoverless",
+        "secondaryTime": "0:59",
+        "sequential": true,
+        "selected": 0
+      },
       "4": { "name": "Ricco 4", "time": "1:15", "sequential": true, "selected": 0 },
       "5": { "name": "Ricco 5", "time": "1:24", "sequential": true, "selected": 0 },
       "6": { "name": "Ricco 6", "time": "1:18", "sequential": true, "selected": 0 },
@@ -135,6 +151,7 @@
   },
   "Gelato": {
     "type": "shines",
+    "requiredUnlocks": ["Bianco Unlock", "Gelato Unlock"],
     "isOpen": true,
     "data": {
       "1": { "name": "Gelato 1", "time": "1:13", "sequential": true, "selected": 0 },
@@ -170,7 +187,14 @@
     "data": {
       "1": { "name": "Pianta 1", "time": "1:07", "sequential": true, "selected": 0 },
       "2": { "name": "Pianta 2", "time": "1:23", "sequential": true, "selected": 0 },
-      "3": { "name": "Pianta 3", "time": "0:56", "sequential": true, "selected": 0 },
+      "3": {
+        "name": "Pianta 3",
+        "time": "0:56",
+        "secondaryName": "Pianta 3 No Damage",
+        "secondaryTime": "1:00",
+        "sequential": true,
+        "selected": 0
+      },
       "4": { "name": "Pianta 4", "time": "1:10", "sequential": true, "selected": 0 },
       "5": { "name": "Pianta 5", "time": "1:42", "sequential": true, "selected": 0 },
       "6": { "name": "Pianta 6", "time": "1:41", "sequential": true, "selected": 0 },
@@ -190,6 +214,7 @@
   },
   "Sirena": {
     "type": "shines",
+    "requiredUnlocks": ["Bianco Unlock"],
     "isOpen": true,
     "data": {
       "1": {
@@ -221,6 +246,7 @@
   },
   "Pinna": {
     "type": "shines",
+    "requiredUnlocks": ["Bianco Unlock", "Ricco Unlock", "Gelato Unlock", "Pinna Unlock"],
     "isOpen": true,
     "data": {
       "1": { "name": "Pinna 1", "time": "1:36", "sequential": true, "selected": 0 },
@@ -234,7 +260,14 @@
         "selected": 0
       },
       "4": { "name": "Pinna 4", "time": "1:25", "sequential": true, "selected": 0 },
-      "5": { "name": "Pinna 5", "time": "1:28", "sequential": false, "selected": 0 },
+      "5": {
+        "name": "Pinna 5",
+        "time": "1:28",
+        "secondaryName": "Pinna 5 FTB",
+        "secondaryTime": "1:38",
+        "sequential": false,
+        "selected": 0
+      },
       "6": {
         "name": "Pinna 6",
         "time": "1:41",
@@ -260,6 +293,7 @@
 
   "Noki": {
     "type": "shines",
+    "requiredUnlocks": ["Bianco Unlock", "Ricco Unlock", "Gelato Unlock", "Pinna Unlock"],
     "isOpen": true,
     "data": {
       "1": { "name": "Noki 1", "time": "1:18", "sequential": true, "selected": 0 },
@@ -367,9 +401,9 @@
       },
       "7": {
         "name": "Pianta 16",
-        "time": "",
+        "time": "1:45",
         "secondaryName": "Pianta 20",
-        "secondaryTime": "",
+        "secondaryTime": "2:10",
         "sequential": false,
         "selected": 0
       },
