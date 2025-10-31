@@ -34,13 +34,6 @@ const id = useId()
 </template>
 
 <style scoped>
-.combo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 175px;
-}
-
 .combo-input {
   border: none;
   border-bottom: 2px solid #1e90ff;
@@ -55,7 +48,7 @@ const id = useId()
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 200px;
+  width: 180px;
 }
 
 .combo-label {
@@ -65,5 +58,15 @@ const id = useId()
   font-size: 0.95rem;
   line-height: 1.2;
   white-space: 'nowrap';
+}
+
+@media (max-width: 1200px) {
+  .combo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%; /* takes full line */
+    max-width: 350px;
+  }
 }
 </style>

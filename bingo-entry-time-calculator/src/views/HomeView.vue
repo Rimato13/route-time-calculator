@@ -201,7 +201,6 @@ function addLogEntry(shineName, isUnlock) {
   timeLog.value.push({ [shineName]: total })
   const thresholds = [3, 5, 10, 20, 26]
   if (thresholds.includes(shineCount.value) && !isUnlock) {
-    console.log(shineCount.value)
     timeLog.value.push({ [shineCount.value + ' shines']: total })
   }
 }
@@ -215,8 +214,9 @@ function deleteLogEntry(shineName) {
 </script>
 
 <template>
+  <h1 class="value">Route Time Calculator</h1>
   <div class="layout">
-    <div class="container">
+    <div class="header-controls">
       <label class="shine-size-label">
         Shine size:
         <select v-model="shineSize" class="shine-size-select">
@@ -225,7 +225,6 @@ function deleteLogEntry(shineName) {
           <option value="large">Large</option>
         </select>
       </label>
-      <h1 class="value">Route Time Calculator</h1>
 
       <label class="upload-btn">
         Upload custom shine speeds
@@ -237,6 +236,17 @@ function deleteLogEntry(shineName) {
         }}
       </button>
       <router-link to="/instructions" class="compact-btn"> App Instructions </router-link>
+      <button
+        class="compact-btn"
+        :class="{ active: showSummary }"
+        @click="showSummary = !showSummary"
+      >
+        {{ showSummary ? 'Hide' : 'Show' }} world summaries
+      </button>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="container">
       <div v-for="(shines, worldName) in worlds" :key="worldName" class="{world-row: isCompact }">
         <h2 class="world-title clickable" v-if="isCompact === 0" @click="toggleWorld(worldName)">
           {{ worldName }}
@@ -312,15 +322,8 @@ function deleteLogEntry(shineName) {
         <SelectInput label="Shines from Blue Trades" v-model="totalShines" />
       </div>
     </div>
-    <div class="columnContainer">
+    <div class="middleContainer">
       <div class="totals">
-        <button
-          class="compact-btn"
-          :class="{ active: showSummary }"
-          @click="showSummary = !showSummary"
-        >
-          {{ showSummary ? 'Hide' : 'Show' }} world summaries
-        </button>
         <div v-if="showSummary">
           <p v-for="(time, world) in totals.worldTotals" :key="world" class="total-line">
             <span class="label-text">{{ world }}:</span>
@@ -337,7 +340,8 @@ function deleteLogEntry(shineName) {
           <span class="value">{{ shineCount }}</span>
         </p>
       </div>
-
+    </div>
+    <div class="rightContainer">
       <div class="shine-log">
         <h3 class="shine-log-title">Progress Log</h3>
         <div class="shine-log-messages">
@@ -355,46 +359,94 @@ function deleteLogEntry(shineName) {
 <style scoped>
 .layout {
   display: flex;
-  width: 100%;
-  max-width: 1500px;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: flex-start;
   gap: 2rem;
+  width: 100%;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
+
+.header {
+  width: 100%;
+}
+
 .container {
-  flex: 1;
+  flex: 2.2;
+  padding-right: 10px;
   max-width: 900px;
 }
 
-.columnContainer {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 350px;
-  min-width: 280px;
-  max-width: 400px;
+.middleContainer {
+  flex: 1;
+  min-width: 260px;
+  max-width: 380px;
 }
 
-@media (max-width: 1000px) {
+.rightContainer {
+  flex: 1.2;
+  min-width: 260px;
+  max-width: 420px;
+}
+
+@media (max-width: 1200px) {
   .layout {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
-  .container,
+  .container {
+    max-width: 80vw;
+  }
+
+  .header-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .upload-btn,
+  .compact-btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .shine-grid {
+    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)) !important;
+    gap: 6px;
+    max-width: 80vw;
+  }
+
   .columnContainer {
     width: 100%;
-    max-width: 1000px;
+    max-width: 100%;
+    position: static;
+    margin-top: 1rem;
+  }
+
+  .shine-log {
+    max-width: 100%;
+    margin-top: 0px;
+  }
+
+  .input-row {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .shine-log {
+    margin-top: 0px !important;
   }
 }
 
 h1 {
   text-align: center;
   font-size: 26px;
-  margin-bottom: 20px;
 }
 
 hr {
@@ -485,14 +537,12 @@ hr {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  margin-bottom: 30px;
 }
 
 .totals {
   display: inline-block;
   text-align: left;
-  margin-top: 5.2rem;
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .total-line {
@@ -536,7 +586,6 @@ hr {
     2px 2px 0 #0078ff,
     4px 4px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 0.3rem;
-  border-bottom: 2px solid rgba(255, 220, 150, 0.8);
   padding-bottom: 0.3rem;
   cursor: pointer;
   user-select: none;
@@ -547,30 +596,34 @@ hr {
 }
 
 .upload-btn {
-  display: inline-block;
   background: linear-gradient(180deg, #ffcc00, #ffaa00);
-  color: #222;
   font-weight: bold;
   font-size: 1rem;
   border: none;
-  border-radius: 10px;
-  padding: 10px 18px;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.15s ease;
   user-select: none;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
-  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.upload-btn input[type='file'] {
+  inset: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
 }
 
 .upload-btn:hover {
   background: linear-gradient(180deg, #ffe066, #ffb700);
-  transform: translateY(-1px);
 }
 
 .upload-btn:active {
   background: linear-gradient(180deg, #ffb700, #ff9900);
-  transform: translateY(1px);
 }
 
 .compact-btn {
@@ -629,7 +682,7 @@ hr {
 }
 
 .shine-log {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background: rgba(20, 20, 20, 0.75);
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
